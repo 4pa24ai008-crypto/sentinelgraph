@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SentinelGraph | Criminal Network Intelligence</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">SG</div>
+      <div>
+        <strong>SentinelGraph</strong>
+        <span>Criminal Network Intelligence</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item active" data-section="dashboard"><span>⌂</span> Dashboard</button>
+      <button class="nav-item" data-section="network"><span>⌘</span> Network Graph</button>
+      <button class="nav-item" data-section="persons"><span>◯</span> Person Search</button>
+      <button class="nav-item" data-section="ai"><span>✦</span> AI Analysis</button>
+      <button class="nav-item" data-section="alerts"><span>!</span> Risk & Alerts</button>
+      <button class="nav-item" data-section="upload"><span>↑</span> Crime Data Upload</button>
+      <button class="nav-item" data-section="locations"><span>⌖</span> Location Analysis</button>
+      <button class="nav-item" data-section="database"><span>▣</span> Database</button>
+    </nav>
+
+    <div class="sidebar-note">
+      <div class="mini-shield">◇</div>
+      <strong>Smart Policing & Security</strong>
+      <p>AI-assisted investigation workspace for discovering hidden relationships and suspicious patterns.</p>
+    </div>
+
+    <div class="sidebar-footer">Team SW_19 · Thekushi<br><span>Academic project prototype</span></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">SMART POLICING & SECURITY</div>
+        <h1 id="pageTitle">Investigator Dashboard</h1>
+      </div>
+      <div class="top-status">
+        <span class="status-dot"></span>
+        <span id="backendStatus">Demo mode</span>
+        <span class="divider"></span>
+        <span>Team SW_19</span>
+        <span class="divider"></span>
+        <span>Thekushi</span>
+      </div>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">AI-POWERED CRIMINAL NETWORK INTELLIGENCE</div>
+          <h2>Uncover hidden connections.<br><em>Detect suspicious patterns.</em><br>Explain the evidence.</h2>
+          <p>SentinelGraph combines <b>FIRs, CDRs, financial transactions, surveillance reports, social media intelligence and criminal history data</b> in one investigator-focused workspace. It extracts people, organizations, vehicles, phone numbers and locations, then connects them through an explainable relationship graph.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" data-jump="network">Explore Network Graph →</button>
+            <button class="ghost-btn" data-jump="upload">Upload Crime Data</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="radar"></div>
+          <div class="network-lines"></div>
+          <div class="hero-node n1">P</div><div class="hero-node n2">O</div><div class="hero-node n3">L</div>
+          <div class="hero-node n4">P</div><div class="hero-node n5">V</div>
+          <div class="hero-label">RELATIONSHIP INTELLIGENCE</div>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <article><span>Entities</span><strong id="mEntities">10</strong><small>people, organizations & assets</small></article>
+        <article><span>Relationships</span><strong id="mRelationships">15</strong><small>financial, communication & location</small></article>
+        <article class="danger"><span>High-Risk Entities</span><strong id="mHighRisk">4</strong><small>prioritized for review</small></article>
+        <article><span>Evidence Links</span><strong id="mEvidence">101</strong><small>connected evidence references</small></article>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <div class="card-head"><div><div class="eyebrow">INVESTIGATION PRIORITY</div><h3>Priority Entities</h3></div><button class="link-btn" data-jump="persons">View all →</button></div>
+          <div id="priorityList"></div>
+        </article>
+        <article class="card">
+          <div class="card-head"><div><div class="eyebrow">EARLY SIGNALS</div><h3>Recent Intelligence Signals</h3></div><button class="link-btn" data-jump="alerts">Open alerts →</button></div>
+          <div id="signalList"></div>
+        </article>
+      </div>
+
+      <article class="card workflow-card">
+        <div class="card-head"><div><div class="eyebrow">INVESTIGATION WORKFLOW</div><h3>From fragmented records to explainable intelligence</h3></div></div>
+        <div class="workflow">
+          <div><b>01</b><strong>Collect</strong><span>FIRs · CDRs · transactions</span></div>
+          <i>→</i>
+          <div><b>02</b><strong>Extract</strong><span>People · places · assets</span></div>
+          <i>→</i>
+          <div><b>03</b><strong>Connect</strong><span>Build relationship graph</span></div>
+          <i>→</i>
+          <div><b>04</b><strong>Analyze</strong><span>Find unusual patterns</span></div>
+          <i>→</i>
+          <div><b>05</b><strong>Explain</strong><span>Trace supporting evidence</span></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- NETWORK -->
+    <section id="network" class="page">
+      <div class="section-title">
+        <div><div class="eyebrow">GRAPH ANALYTICS</div><h2>Criminal Network Graph</h2><p>Visualize relationships among people, organizations, vehicles, phones and locations.</p></div>
+        <div class="controls"><select id="networkFilter"><option value="all">All relationships</option><option value="financial">Financial</option><option value="communication">Communication</option><option value="location">Location</option></select><button class="ghost-btn" id="resetGraph">Reset graph</button></div>
+      </div>
+      <div class="network-layout">
+        <article class="card graph-card">
+          <div id="networkCanvas" class="network-canvas"></div>
+          <div class="legend">
+            <span><i class="person"></i>Person</span><span><i class="organization"></i>Organization</span><span><i class="vehicle"></i>Vehicle</span><span><i class="phone"></i>Phone</span><span><i class="location"></i>Location</span>
+          </div>
+        </article>
+        <aside class="card inspector" id="networkInspector">
+          <div class="empty-state"><div class="empty-icon">⌁</div><h3>Select an entity</h3><p>Click any node in the network to inspect its connections, risk signal and supporting evidence.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PERSON SEARCH -->
+    <section id="persons" class="page">
+      <div class="section-title">
+        <div><div class="eyebrow">INVESTIGATOR SEARCH</div><h2>Person & Entity Search</h2><p>Find an entity and immediately see its connected people, organizations, assets and locations.</p></div>
+      </div>
+      <article class="search-panel card">
+        <label>Search entity<input id="personSearch" placeholder="Try: Arun Nair, Maya Joseph, Northstar Logistics..."></label>
+        <div class="suggestions"><button data-person="Arun Nair">Arun Nair</button><button data-person="Maya Joseph">Maya Joseph</button><button data-person="Ravi Menon">Ravi Menon</button><button data-person="Northstar Logistics">Northstar Logistics</button></div>
+      </article>
+      <div id="personResult" class="person-result"></div>
+    </section>
+
+    <!-- AI -->
+    <section id="ai" class="page">
+      <div class="section-title">
+        <div><div class="eyebrow">EXPLAINABLE AI</div><h2>Relationship & Anomaly Analysis</h2><p>Combines network structure, repeated activity and unusual links into an explainable investigation signal.</p></div>
+        <span class="ready-pill"><i></i> Analysis engine ready</span>
+      </div>
+      <article class="card ai-controls">
+        <label>Entity<select id="aiEntity"><option>Arun Nair</option><option>Maya Joseph</option><option>Ravi Menon</option><option>Northstar Logistics</option></select></label>
+        <label>Analysis<select id="aiMode"><option value="combined">Relationship + anomaly</option><option value="relationship">Relationship only</option><option value="anomaly">Anomaly only</option></select></label>
+        <button class="primary-btn" id="runAI">Run Analysis</button>
+      </article>
+      <div id="aiOutput"></div>
+    </section>
+
+    <!-- ALERTS -->
+    <section id="alerts" class="page">
+      <div class="section-title"><div><div class="eyebrow">RISK TRIAGE</div><h2>Risk & Suspicious Activity</h2><p>Signals are prioritized using transparent demonstration rules and supporting evidence.</p></div><button class="ghost-btn" id="clearAlerts">Clear demo alerts</button></div>
+      <div class="alert-summary"><div><span>High</span><strong id="highCount">2</strong></div><div><span>Medium</span><strong id="mediumCount">2</strong></div><div><span>Total signals</span><strong id="totalCount">4</strong></div></div>
+      <div id="alertCards" class="alert-grid"></div>
+    </section>
+
+    <!-- UPLOAD -->
+    <section id="upload" class="page">
+      <div class="section-title"><div><div class="eyebrow">DATA INGESTION</div><h2>Crime Data Upload</h2><p>Import structured crime records and use them for network and anomaly analysis.</p></div><button class="ghost-btn" id="downloadTemplate">Download CSV template</button></div>
+      <div class="upload-grid">
+        <article class="card upload-card">
+          <div class="upload-icon">CSV</div><h3>Upload crime data</h3><p>Required columns: <code>case_id,date,crime_type,person,location,description</code></p>
+          <label class="drop-zone" id="dropZone"><input type="file" id="crimeFile" accept=".csv"><strong>Drop CSV here</strong><span>or click to choose a file</span><small>Processed locally for this academic prototype.</small></label>
+          <div id="uploadStatus" class="upload-status"></div>
+        </article>
+        <article class="card">
+          <div class="eyebrow">PIPELINE</div><h3>How the data becomes intelligence</h3>
+          <div class="pipeline-list"><div><b>01</b>Validate records</div><div><b>02</b>Extract entities</div><div><b>03</b>Build relationships</div><div><b>04</b>Generate risk signals</div><div><b>05</b>Show explainable evidence</div></div>
+        </article>
+      </div>
+      <article class="card preview-card" id="uploadPreview" hidden><div class="card-head"><div><div class="eyebrow">IMPORTED RECORDS</div><h3>Data preview</h3></div><span id="uploadMeta"></span></div><div class="table-wrap"><table><thead><tr><th>Case ID</th><th>Date</th><th>Crime Type</th><th>Person</th><th>Location</th><th>Description</th></tr></thead><tbody id="uploadTable"></tbody></table></div></article>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section id="locations" class="page">
+      <div class="section-title"><div><div class="eyebrow">SPATIAL INTELLIGENCE</div><h2>Location-Based Analysis</h2><p>Understand where activity concentrates and which entities repeatedly appear around the same locations.</p></div><select id="locationSelect"><option value="all">All locations</option><option value="Harbor District">Harbor District</option><option value="Central Junction">Central Junction</option></select></div>
+      <div class="location-grid" id="locationCards"></div>
+      <article class="card"><div class="card-head"><div><div class="eyebrow">LOCATION INSIGHT</div><h3 id="locationTitle">All monitored locations</h3></div><span class="score-pill" id="locationScore">Signal 68/100</span></div><div id="locationInsight" class="insight-box"></div></article>
+    </section>
+
+    <!-- DATABASE -->
+    <section id="database" class="page">
+      <div class="section-title"><div><div class="eyebrow">BACKEND & STORAGE</div><h2>Database & API</h2><p>Persistent SQLite storage for crime records and investigator queries.</p></div></div>
+      <div class="db-grid">
+        <article class="card db-status"><div class="db-icon">▣</div><h3 id="dbTitle">SQLite database</h3><div class="db-online" id="dbOnline"><i></i> Checking connection…</div><p id="dbText">The frontend can connect to the Node.js/Express API when the backend is running.</p></article>
+        <article class="card"><div class="eyebrow">AVAILABLE API</div><h3>Investigator services</h3><ul class="api-list"><li><code>GET /api/crime-records</code><span>Retrieve records</span></li><li><code>POST /api/crime-records</code><span>Store imported data</span></li><li><code>GET /api/entities</code><span>Entity summary</span></li><li><code>GET /api/alerts</code><span>Risk signals</span></li><li><code>GET /api/location-analysis</code><span>Location activity</span></li></ul></article>
+      </div>
+    </section>
+
+    <footer class="main-footer">SentinelGraph · AI-Powered Criminal Network Intelligence & Hidden Relationship Detection System · Team SW_19 — Thekushi · <span>Academic prototype using synthetic/demo data</span></footer>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
